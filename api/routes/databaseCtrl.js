@@ -55,15 +55,8 @@ module.exports = {
     });
   },
   select: function (req, res) {
-    var id = req.body.id;
-    var sqlStatement = 'SELECT * FROM data WHERE id=' + connexion.escape(id);
-    console.log("statement is " + sqlStatement);
-    connexion.query(sqlStatement).then(function (rows) {
-      console.log(rows);
-      res.status(200).json(rows);
-      // connexion.end();
-    }).catch(function (err) {
-      res.status(400).send(err);
+    return res.status(200).json({
+      message: 'TODO'
     });
   }
 };
