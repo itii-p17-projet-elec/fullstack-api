@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "solarcharger",
+    "password": "solarcharger",
+    "database": "solarcharger",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "solarcharger",
+    "password": "solarcharger",
+    "database": "solarcharger",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "solarcharger",
+    "password": "solarcharger",
+    "database": "solarcharger",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
