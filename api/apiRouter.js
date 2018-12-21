@@ -9,7 +9,6 @@ router.get('/', function (req, res) {
     status: 'success',
     message: 'Welcome to the API'
   })
-  console.log('route \'/\' is used');
 });
 
 router.post('/database/insert', databaseCtrl.insert);

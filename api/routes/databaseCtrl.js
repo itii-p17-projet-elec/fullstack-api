@@ -55,8 +55,30 @@ module.exports = {
     });
   },
   select: function (req, res) {
-    return res.status(200).json({
-      message: 'TODO'
-    });
+    var id = req.body.id;
+
+    if (id != null) {
+      var row = models.batteryInfo.findOne({
+        where: {
+          id: id
+        }
+      }).then(function (row) {
+        return res.status(201).json(row);
+      }).catch(function (err) {
+        return res.status(500).json({
+          error: 'Cannot find id',
+          message: err
+        });
+      });
+    } else {
+      var rows = models.batteryInfo.findAll().then(function (rows) {
+        return res.status(201).json(rows);
+      }).catch(function (err) {
+        return res.status(500).json({
+          error: 'Cannot get data',
+          message: err
+        });
+      });
+    }
   }
 };
