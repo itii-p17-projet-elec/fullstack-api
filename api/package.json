@@ -1,7 +1,7 @@
 {
-  "name": "solarcharger-server",
+  "name": "solarcharger-api-server",
   "version": "1.0.0",
-  "description": "Server of SolarCharger used for the API",
+  "description": "API Server for the SolarCharger Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,7 @@
   "author": "Tonarelli Cedric",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "sequelize": "^4.23.0"
   }
 }
