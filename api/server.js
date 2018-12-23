@@ -6,13 +6,14 @@ var apiRouter = require('./apiRouter');
 // Server instantiation
 var server = express();
 
+// Body parser configuration
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
 // Configure routes
 server.get('/', function (request, result) {
     result.setHeader('Content-Type', 'text/html');
-    result.status(200).sendFile('./index.html', {root: __dirname });
+    result.status(200).sendFile('./index.html', { root: __dirname });
 });
 
 // We use the API router by starting with /api/someRoute
