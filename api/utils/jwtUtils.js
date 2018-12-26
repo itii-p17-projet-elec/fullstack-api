@@ -12,5 +12,23 @@ module.exports = {
       {
         expiresIn: '1h'
       });
+  },
+  parseAuth: function (auth) {
+    return (auth != null) ? auth.replace('Bearer ', '') : null;
+  },
+  getUserId: function (auth) {
+    var userId = null;
+    var token = module.exports.parseAuth(auth);
+    if (token) {
+      try {
+        var jwtToken = jwt.verify(token, JWT_SIGN_SECRET);
+        if (jwtToken) {
+          userId = jwtToken.userId;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    return userId;
   }
 }

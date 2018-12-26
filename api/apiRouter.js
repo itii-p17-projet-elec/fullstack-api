@@ -19,5 +19,6 @@ router.get('/database/select/', databaseCtrl.select);
 // User's routes
 router.post('/user/register/', usersCtrl.register);
 router.post('/user/login/', usersCtrl.login);
+router.get('/user/profile/', usersCtrl.getUserProfile);
 
 module.exports = router;
