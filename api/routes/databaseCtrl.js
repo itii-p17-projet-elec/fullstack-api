@@ -34,10 +34,10 @@ module.exports = {
       return res.status(400).json({ error: 'missing parameters' });
     }
 
-    var newDate = models.date_received.create({
+    var newDate = models.Timestamps.create({
       typeCharge: type
     }).then(function (newDate) {
-      var newInfo = models.batteryInfo.create({
+      var newInfo = models.BatteryInfo.create({
         idTimestamp: newDate.idTimestamp,
         tempBattery: tempBattery,
         tempAmbient: tempAmbient,
@@ -58,7 +58,7 @@ module.exports = {
     var id = req.body.id;
 
     if (id != null) {
-      var row = models.batteryInfo.findOne({
+      var row = models.BatteryInfo.findOne({
         where: {
           id: id
         }
@@ -71,7 +71,7 @@ module.exports = {
         });
       });
     } else {
-      var rows = models.batteryInfo.findAll().then(function (rows) {
+      var rows = models.BatteryInfo.findAll().then(function (rows) {
         return res.status(201).json(rows);
       }).catch(function (err) {
         return res.status(500).json({
