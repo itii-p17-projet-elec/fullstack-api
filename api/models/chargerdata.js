@@ -1,17 +1,18 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
-  var chargerdata = sequelize.define('chargerdata', {
+  return sequelize.define('chargerdata', {
     IdData: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     MeasureId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'measures',
+        model: 'measure',
         key: 'IdMeasure'
       }
     },
@@ -48,5 +49,4 @@ module.exports = function (sequelize, DataTypes) {
       createdAt: false,
       updatedAt: false
     });
-  return chargerdata;
 };

@@ -37,16 +37,20 @@ module.exports = {
     }
 
     //TODO: modify to comply with the new database architecture
-    var newDate = models.measures.create({
-    }).then(function (newDate) {
-      var newInfo = models.chargerdata.create({
-        IdMeasure: newDate.MeasureId,
-        tempBattery: tempBattery,
-        tempAmbient: tempAmbient,
-        percentageCharge: percentageCharge
-      }).then(function (newInfo) {
+    var newMeasure = models.measure.create({
+    }).then(function (newMeasure) {
+      var newData = models.chargerdata.create({
+        MeasureId: newMeasure.IdMeasure,
+        UBat: voltageBattery,
+        TBat: tempBattery,
+        TExt: tempAmbient,
+        ICharge: loadBattery,
+        IDischarge: currentDischarge,
+        IConsum: currentConsuption,
+        PSignal: powerSignal
+      }).then(function (newData) {
         return res.status(201).json({
-          id: newInfo.id
+          id: newData.IdData
         });
       }).catch(function (err) {
         return res.status(500).json({

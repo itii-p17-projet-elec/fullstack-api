@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
-  var measure = sequelize.define('measure', {
+  return sequelize.define('measure', {
     IdMeasure: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -18,5 +18,4 @@ module.exports = function (sequelize, DataTypes) {
       createdAt: false,
       updatedAt: false
     });
-  return measure;
 };
