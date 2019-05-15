@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('Data', {
+  return sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -10,14 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
-    value: {
-      type: DataTypes.STRING(15),
-      allowNull: true
+    password: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   }, {
-      tableName: 'Data',
+      tableName: 'user',
       createdAt: false,
       updatedAt: false
     });

@@ -1,0 +1,57 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: solarcharger
+-- ------------------------------------------------------
+-- Server version	5.7.23
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `chargerdata`
+--
+
+DROP TABLE IF EXISTS `chargerdata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chargerdata` (
+  `IdMeasure` int(11) NOT NULL,
+  `UBat` decimal(10,2) DEFAULT NULL,
+  `TBat` decimal(10,2) DEFAULT NULL,
+  `TExt` decimal(10,2) DEFAULT NULL,
+  `ICharge` decimal(10,2) DEFAULT NULL,
+  `IDischarge` decimal(10,2) DEFAULT NULL,
+  `IConsum` decimal(10,2) DEFAULT NULL,
+  `PSignal` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`IdMeasure`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chargerdata`
+--
+
+LOCK TABLES `chargerdata` WRITE;
+/*!40000 ALTER TABLE `chargerdata` DISABLE KEYS */;
+INSERT INTO `chargerdata` VALUES (0,11.69,16.89,22.95,4.74,0.07,4.14,6.67),(70,12.93,-8.27,20.17,5.19,3.31,0.98,2.63),(69,11.41,25.05,18.49,5.49,5.42,4.59,1.93),(68,9.77,24.46,19.19,0.09,2.17,4.55,11.38),(67,12.62,31.96,9.52,3.99,1.08,5.40,15.41),(66,11.67,10.52,-5.32,2.16,3.13,3.19,1.52),(65,10.87,39.10,-1.56,1.18,2.93,5.11,12.65),(64,12.86,2.26,19.35,1.33,2.27,1.39,0.36),(63,10.00,8.41,40.42,5.74,4.91,1.33,10.50),(62,12.95,6.83,37.24,4.38,5.22,0.96,3.07),(61,9.78,-3.41,-5.82,0.34,0.24,0.18,0.46);
+/*!40000 ALTER TABLE `chargerdata` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-05-04 17:02:08
