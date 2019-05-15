@@ -47,6 +47,7 @@ module.exports = function (sequelize, DataTypes) {
   }, {
       tableName: 'chargerdata',
       createdAt: false,
-      updatedAt: false
+      updatedAt: false,
+      omitNull: true
     });
 };

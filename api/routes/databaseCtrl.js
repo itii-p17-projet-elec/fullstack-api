@@ -31,13 +31,14 @@ module.exports = {
     var currentDischarge = req.body.currentDischarge;
     var currentConsuption = req.body.currentConsuption;
     var powerSignal = req.body.powerSignal;
+    var timestamp = req.body.timestamp;
 
-    if (voltageBattery == null || tempBattery == null || tempAmbient == null || loadBattery == null || currentDischarge == null || currentConsuption == null || powerSignal == null) {
-      return res.status(400).json({ error: 'missing parameters' });
+    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
+      return res.status(400).json({ error: 'need at least one parameter to creatre an entry' });
     }
 
-    //TODO: modify to comply with the new database architecture
     var newMeasure = models.measure.create({
+      MeasureDate: timestamp
     }).then(function (newMeasure) {
       var newData = models.chargerdata.create({
         MeasureId: newMeasure.IdMeasure,
@@ -54,7 +55,7 @@ module.exports = {
         });
       }).catch(function (err) {
         return res.status(500).json({
-          error: 'Cannot add new data',
+          error: 'cannot add new data',
           message: err
         });
       });
@@ -80,11 +81,11 @@ module.exports = {
     if (limit != null) {
       var rows = connexion
         .query(query + ' LIMIT ' + limit, { type: connexion.QueryTypes.SELECT })
-        .then(function (row) {
-          return res.status(201).json(row);
+        .then(function (rows) {
+          return res.status(201).json(rows);
         }).catch(function (err) {
           return res.status(500).json({
-            error: 'Error when querying',
+            error: 'error when querying',
             message: err
           });
         });
@@ -96,10 +97,52 @@ module.exports = {
         })
         .catch(function (err) {
           return res.status(500).json({
-            error: 'Error when querying',
+            error: 'error when querying',
             message: err
           });
         });
     }
+  },
+  modify: function (req, res) {
+    var id = req.body.id;
+    var voltageBattery = req.body.voltageBattery;
+    var tempBattery = req.body.tempBattery;
+    var tempAmbient = req.body.tempAmbient;
+    var loadBattery = req.body.loadBattery;
+    var currentDischarge = req.body.currentDischarge;
+    var currentConsuption = req.body.currentConsuption;
+    var powerSignal = req.body.powerSignal;
+
+    if (id == null) {
+      return res.status(400).json({ error: 'id cannot be null' });
+    }
+
+    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
+      return res.status(400).json({ error: 'need at least one parameter to modify the entry' });
+    }
+
+    var updatedData = models.chargerdata.update({
+      UBat: voltageBattery,
+      TBat: tempBattery,
+      TExt: tempAmbient,
+      ICharge: loadBattery,
+      IDischarge: currentDischarge,
+      IConsum: currentConsuption,
+      PSignal: powerSignal
+    }, {
+        where: {
+          IdData: parseInt(id)
+        }
+      }
+    ).then(function (data) {
+      return res.status(202).json({
+        id: id
+      });
+    }).catch(function (err) {
+      return res.status(500).json({
+        error: 'cannot modify entry',
+        message: err
+      });
+    });
   }
 };
