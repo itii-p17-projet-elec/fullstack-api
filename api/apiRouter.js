@@ -13,8 +13,8 @@ router.get('/', function (req, res) {
 });
 
 // Database's routes
-router.post('/database/insert/', databaseCtrl.insert);
-router.get('/database/select/', databaseCtrl.select);
+router.post('/db/insert/', databaseCtrl.insert);
+router.get('/db/select/', databaseCtrl.select);
 
 // User's routes
 router.post('/user/register/', usersCtrl.register);

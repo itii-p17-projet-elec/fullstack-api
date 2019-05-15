@@ -1,0 +1,4 @@
+https://ubuntu-mate.community/t/how-to-install-mysql-server-and-mysql-workbench-on-ubuntu-mate-18-04/17884
+sudo mysql-workbench
+import database schema
+sudo npm i -g mysql
