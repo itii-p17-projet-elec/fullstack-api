@@ -15,6 +15,7 @@ router.get('/', function (req, res) {
 // Database's routes
 router.post('/db/insert/', databaseCtrl.insert);
 router.get('/db/select/', databaseCtrl.select);
+router.put('/db/modify/', databaseCtrl.modify);
 
 // User's routes
 router.post('/user/register/', usersCtrl.register);
