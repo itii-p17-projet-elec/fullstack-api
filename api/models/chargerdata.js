@@ -20,6 +20,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DECIMAL,
       allowNull: true
     },
+    PercentBattery: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
     TBat: {
       type: DataTypes.DECIMAL,
       allowNull: true

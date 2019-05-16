@@ -28,12 +28,13 @@ module.exports = {
     var tempBattery = req.body.tempBattery;
     var tempAmbient = req.body.tempAmbient;
     var loadBattery = req.body.loadBattery;
+    var currentCharge = req.body.currentCharge;
     var currentDischarge = req.body.currentDischarge;
     var currentConsuption = req.body.currentConsuption;
     var powerSignal = req.body.powerSignal;
     var timestamp = req.body.timestamp;
 
-    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
+    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentCharge == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
       return res.status(400).json({ error: 'need at least one parameter to creatre an entry' });
     }
 
@@ -45,7 +46,8 @@ module.exports = {
         UBat: voltageBattery,
         TBat: tempBattery,
         TExt: tempAmbient,
-        ICharge: loadBattery,
+        PercentBattery: loadBattery,
+        ICharge: currentCharge,
         IDischarge: currentDischarge,
         IConsum: currentConsuption,
         PSignal: powerSignal
@@ -66,13 +68,13 @@ module.exports = {
     var queryColumns = 'IdData as id'
       + ', date_format(MeasureDate,\'\%Y\/\%m\/\%d \%h:\%i\') as timestamp'
       + ', UBat as voltageBattery'
+      + ', PercentBattery as loadBattery'
       + ', TBat as tempBattery'
       + ', TExt as tempAmbient'
-      + ', ICharge as loadBattery'
+      + ', ICharge as currentCharge'
       + ', IDischarge as currentDischarge'
       + ', IConsum as currentConsuption'
-      + ', PSignal as powerSignal'
-
+      + ', PSignal as powerSignal';
     var queryTables = 'chargerdata, measure';
     var queryClause = 'MeasureId=IdMeasure';
     var querySort = 'ORDER BY timestamp DESC';
@@ -109,6 +111,7 @@ module.exports = {
     var tempBattery = req.body.tempBattery;
     var tempAmbient = req.body.tempAmbient;
     var loadBattery = req.body.loadBattery;
+    var currentCharge = req.body.currentCharge;
     var currentDischarge = req.body.currentDischarge;
     var currentConsuption = req.body.currentConsuption;
     var powerSignal = req.body.powerSignal;
@@ -117,15 +120,16 @@ module.exports = {
       return res.status(400).json({ error: 'id cannot be null' });
     }
 
-    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
+    if (voltageBattery == null && tempBattery == null && tempAmbient == null && loadBattery == null && currentCharge == null && currentDischarge == null && currentConsuption == null && powerSignal == null) {
       return res.status(400).json({ error: 'need at least one parameter to modify the entry' });
     }
 
     var updatedData = models.chargerdata.update({
       UBat: voltageBattery,
+      PercentBattery: loadBattery,
       TBat: tempBattery,
       TExt: tempAmbient,
-      ICharge: loadBattery,
+      ICharge: currentCharge,
       IDischarge: currentDischarge,
       IConsum: currentConsuption,
       PSignal: powerSignal
