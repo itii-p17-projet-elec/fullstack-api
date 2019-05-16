@@ -1,5 +1,6 @@
 // Imports 
 var express = require('express');
+var cors = require('cors');
 var bodyParser = require('body-parser');
 var apiRouter = require('./apiRouter');
 
@@ -7,6 +8,7 @@ const PORT = 8080;
 
 // Server instantiation
 var server = express();
+server.use(cors());
 
 // Body parser configuration
 server.use(bodyParser.urlencoded({ extended: true }));
