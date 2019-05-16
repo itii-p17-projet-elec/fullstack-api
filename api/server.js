@@ -3,6 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var apiRouter = require('./apiRouter');
 
+const PORT = 8080;
+
 // Server instantiation
 var server = express();
 
@@ -20,6 +22,6 @@ server.get('/', function (request, result) {
 server.use('/api', apiRouter);
 
 // Launch server
-server.listen(8080, 'localhost', function () {
-    console.log('server is listening...');
+server.listen(PORT, '0.0.0.0', function () {
+    console.log('Server is listening on port ' + PORT + '...');
 });
