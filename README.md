@@ -50,6 +50,11 @@ sudo npm i -g mysql
 ```
 
 # Usage
+
+## Run the API server
 ```bash
 node api/server.js
 ```
+
+## Use the API routes
+See the [SolarCharger API](https://documenter.getpostman.com/view/7553528/S1M2RkwV) documentation to know how to use correctly the API.
